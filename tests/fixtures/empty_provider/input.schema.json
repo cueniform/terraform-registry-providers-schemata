@@ -1,0 +1,8 @@
+{
+  "format_version": "1.0",
+  "provider_schemas": {
+    "registry.terraform.io/cueniTEST/fixture": {
+      "provider": {}
+    }
+  }
+}
