@@ -10,27 +10,27 @@ for fixture in tests/fixtures/*; do
 
     ## The singleton "provider" schema
     cue export \
-		cueniform.com/internal/processor \
-		$fixture/input.schema.json \
-		--path input:schema: \
-		--inject namespace=cueniTEST \
-		--inject provider=fixture \
-		--expression output.provider \
-		--outfile tests/tmp/provider.schema.json
+        cueniform.com/internal/processor \
+        $fixture/input.schema.json \
+        --path input:schema: \
+        --inject namespace=cueniTEST \
+        --inject provider=fixture \
+        --expression output.provider \
+        --outfile tests/tmp/provider.schema.json
     cue import $json tests/tmp/provider.schema.json --package provider --path '_#Schema:'
     echo "provider: fixture: _#Schema | [..._#Schema]" >>tests/tmp/provider.schema.cue # FIXME: this is awful
 
     ## Zero or more "resources"
 
     ### Find which resources the fixture contains
-   	cue export \
-   		cueniform.com/internal/processor:inventory \
-   		$fixture/input.schema.json \
-   		--path input:schema: \
-   		--inject namespace=cueniTEST \
-   		--inject provider=fixture \
-   		--expression output.resources \
-   		--outfile tests/tmp/inventory.resources.txt
+    cue export \
+        cueniform.com/internal/processor:inventory \
+        $fixture/input.schema.json \
+        --path input:schema: \
+        --inject namespace=cueniTEST \
+        --inject provider=fixture \
+        --expression output.resources \
+        --outfile tests/tmp/inventory.resources.txt
 
     ### Export each resource's schema
     for resource in $(cat tests/tmp/inventory.resources.txt); do
@@ -48,14 +48,14 @@ for fixture in tests/fixtures/*; do
     ## Zero or more "data-sources"
 
     ### Find which data-sources the fixture contains
-   	cue export \
-   		cueniform.com/internal/processor:inventory \
-   		$fixture/input.schema.json \
-   		--path input:schema: \
-   		--inject namespace=cueniTEST \
-   		--inject provider=fixture \
-   		--expression 'output."data-sources"' \
-   		--outfile tests/tmp/inventory.data-sources.txt
+    cue export \
+        cueniform.com/internal/processor:inventory \
+        $fixture/input.schema.json \
+        --path input:schema: \
+        --inject namespace=cueniTEST \
+        --inject provider=fixture \
+        --expression 'output."data-sources"' \
+        --outfile tests/tmp/inventory.data-sources.txt
 
     ### Export each data-source's schema
     for data_source in $(cat tests/tmp/inventory.data-sources.txt); do
