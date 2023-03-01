@@ -10,7 +10,7 @@ for fixture in tests/fixtures/*; do
     find "$test_dir"/ -type f -not -name .gitkeep -delete
 
     # Turn the fixture into multiple CUE files
-    ./bin/tf-schema-to-cue.sh "$fixture"/input.schema.json cueniTEST fixture "$test_dir"
+    ./bin/provider-schema-to-cue.sh "$fixture"/input.schema.json cueniTEST fixture "$test_dir"
 
     # Vet all schemas against test cases
     ## Find all schemas
