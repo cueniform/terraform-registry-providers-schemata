@@ -15,6 +15,6 @@ output: {
 	if input.schema.provider_schemas[input.path].provider != _|_ {
 		provider: "provider"
 	}
-	resources:      *"" | string
-	"data-sources": *"" | string
+	resources:    *"" | string
+	data_sources: *"" | string
 }
